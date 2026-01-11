@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.22"
+    id("org.jetbrains.kotlin.jvm") version "1.9.25"
     id("org.jetbrains.intellij.platform") version "2.10.5"
 }
 
@@ -27,13 +27,16 @@ kotlin {
     jvmToolchain(17)
 }
 
-tasks {
-    patchPluginXml {
-        sinceBuild.set("241")
-        untilBuild.set("251.*")
+intellijPlatform {
+    pluginConfiguration {
+        ideaVersion {
+            sinceBuild = "241"
+            untilBuild = provider { null }  // Support all future versions
+        }
     }
+}
 
-    // Disable instrumentation to avoid JDK path issues
+tasks {
     instrumentCode {
         enabled = false
     }
