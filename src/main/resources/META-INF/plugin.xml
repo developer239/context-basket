@@ -1,0 +1,49 @@
+<idea-plugin>
+    <id>com.example.contextbasket</id>
+    <name>Context Basket</name>
+    <vendor>Your Name</vendor>
+
+    <description><![CDATA[
+    Collect files into a basket and copy their contents to clipboard for AI prompting workflows.
+    <ul>
+        <li>Right-click files/folders to add to basket</li>
+        <li>View selected files in the tool window</li>
+        <li>Copy all contents to clipboard with one click</li>
+    </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Tool Window -->
+        <toolWindow
+                id="Context Basket"
+                anchor="right"
+                icon="AllIcons.Actions.ShortcutFilter"
+                factoryClass="com.example.contextbasket.ui.BasketToolWindowFactory"/>
+
+        <!-- Project View Highlighter -->
+        <treeStructureProvider
+                implementation="com.example.contextbasket.ui.ProjectViewHighlighter"/>
+    </extensions>
+
+    <actions>
+        <!-- Add to Basket Action -->
+        <action id="ContextBasket.Add"
+                class="com.example.contextbasket.action.AddToBasketAction"
+                text="Add to Context Basket"
+                description="Add selected files to Context Basket"
+                icon="AllIcons.General.Add">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+
+        <!-- Remove from Basket Action -->
+        <action id="ContextBasket.Remove"
+                class="com.example.contextbasket.action.RemoveFromBasketAction"
+                text="Remove from Context Basket"
+                description="Remove selected files from Context Basket"
+                icon="AllIcons.General.Remove">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
