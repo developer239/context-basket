@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com.example.contextbasket</id>
+    <id>com.michaljarnot.contextbasket</id>
     <name>Context Basket</name>
-    <vendor>Your Name</vendor>
+    <vendor>Michal Jarnot</vendor>
 
     <description><![CDATA[
     Collect files into a basket and copy their contents to clipboard for AI prompting workflows.
